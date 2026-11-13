@@ -1,0 +1,38 @@
+name: CppKeyboard
+options:
+  bundleIdPrefix: com.sideapp
+  deploymentTarget:
+    iOS: "14.0"
+targets:
+  CppKeyboard:
+    type: application
+    platform: iOS
+    sources: [CppKeyboard]
+    dependencies:
+      - target: KeyboardExt
+        embed: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.sideapp.cppkeyboard
+        INFOPLIST_FILE: CppKeyboard/Info.plist
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: "1,2"
+  KeyboardExt:
+    type: app-extension
+    platform: iOS
+    sources: [KeyboardExt]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.sideapp.cppkeyboard.keyboard
+        INFOPLIST_FILE: KeyboardExt/Info.plist
+        CODE_SIGN_STYLE: Automatic
+        TARGETED_DEVICE_FAMILY: "1,2"
+schemes:
+  CppKeyboard:
+    build:
+      targets:
+        CppKeyboard: all
+    run:
+      config: Release
+    archive:
+      config: Release
